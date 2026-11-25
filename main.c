@@ -15,7 +15,7 @@ Fecha agregar_fecha() {
 
         if (anio < 0 ) {
             bandera = 1;
-            printf("Error a%cio invalido", 164);
+            printf("Error a%cio invalido\n", 164);
         }else {
             bandera = 0;
         }
@@ -27,36 +27,37 @@ Fecha agregar_fecha() {
 
         if (mes > 12 || mes < 1) {
             bandera = 1;
-            printf("Ingrese un mes valido (1 - 12)");
+            printf("Ingrese un mes valido (1 - 12)\n");
         }else {
             bandera = 0;
         }
     }while (bandera);
 
-    do {
+    do {//Se asegura que el dia no sea 0  y este dentro de el rango de el mes
         printf("Ingrese el dia (0 - %d): ", dias_por_mes[mes-1]);
-        scanf("%d", &mes);
+        scanf("%d", &dia);
 
         if (dia > dias_por_mes[mes-1] || mes < 0) {
             bandera = 1;
-            printf("Error: Ingrese un dia valido 0 - %d", dias_por_mes[mes-1]);
+            printf("Error: Ingrese un dia valido 0 - %d\n", dias_por_mes[mes-1]);
         }else {
             bandera = 0;
         }
     }while (bandera);
 
+    fecha.dia = dia;
+    fecha.mes = mes;
+    fecha.anio = anio;
 
-
-
-
+    return fecha;
 }
+
+
 
 
 
 int main() {
 
-    Fecha fecha = agregar_fecha();
-    printf("%d / %d / %d", fecha.dia, fecha.mes, fecha.anio);
 
 
 
